@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./src/index.js",
-    "start:pm2": "pm2 start ecosystem"
+    "start:pm2": "pm2 start ecosystem.config.js"
   },
   "repository": {
     "type": "git",
