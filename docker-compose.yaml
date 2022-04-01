@@ -36,7 +36,25 @@ services:
 
     networks:
       - api-network
+      - cache-network
+
+    links:
+      - cache
+
+  cache:
+    image: redis
+    container_name: cache
+    hostname: cache
+    tty: true
+    stdin_open: true
+    restart: "unless-stopped"
+
+    networks:
+      - cache-network
 
 networks:
   api-network:
+    driver: bridge
+
+  cache-network:
     driver: bridge
