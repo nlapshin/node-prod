@@ -7,18 +7,29 @@ const redis = new Redis({
   port: process.env.REDIS_PORT || 6379
 });
 
-const PORT = process.env.PORT || 4000
+;(async () => {
+  const ID = process.env.HOSTNAME
+  const PORT = process.env.PORT || 4000
 
-redis.set('cache', 'cache')
+  console.log(ID)
 
-app.get('/ping', (req, res) => {
-  res.send('pong')
-})
+  redis.set('cache', 'cache')
 
-app.get('/cache', (req, res) => {
-  res.send(redis.get('cache'))
-})
+  app.get('/ping', (req, res) => {
+    res.send('pong')
+  })
 
-app.listen(PORT, () => {
-  console.log(`Server started on ${PORT} port`)
-})
+  app.get('/cache', (req, res) => {
+    res.send(redis.get('cache'))
+  })
+
+  app.get('/id', (req, res) => {
+    res.send(`Container id ${ID}`)
+  })
+
+  app.listen(PORT, () => {
+    console.log(`Server started on ${PORT} port`)
+  })
+
+
+})()

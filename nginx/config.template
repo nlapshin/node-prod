@@ -1,14 +1,10 @@
-upstream nodeprod {
-  server api:4000;
-}
-
 server {
   listen 80;
 
   server_name nlapshin.com;
 
   location / {
-        proxy_pass http://nodeprod;
+        proxy_pass http://api:4000;
 
         proxy_http_version 1.1;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;

@@ -16,27 +16,28 @@ services:
       - 80:80
       - 443:443
 
-    networks:
-      - api-network
+    # networks:
+    #   - api-network
 
-    links:
+    depends_on:
       - api
 
   api:
-    container_name: api
-    hostname: api
+    # container_name: api
+    # hostname: api
     tty: true
     stdin_open: true
     restart: "unless-stopped"
+    scale: 4
 
     build: .
 
     env_file:
       - .env
 
-    networks:
-      - api-network
-      - cache-network
+    # networks:
+    #   - api-network
+    #   - cache-network
 
     links:
       - cache
@@ -49,12 +50,12 @@ services:
     stdin_open: true
     restart: "unless-stopped"
 
-    networks:
-      - cache-network
+    # networks:
+    #   - cache-network
 
-networks:
-  api-network:
-    driver: bridge
+# networks:
+#   api-network:
+#     driver: bridge
 
-  cache-network:
-    driver: bridge
+#   cache-network:
+#     driver: bridge
