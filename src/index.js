@@ -5,7 +5,7 @@ const PORT = process.env.PORT || 4000;
 const hostname = os.hostname();
 
 const server = http.createServer(async (req, res) => {
-  return res.end(`Hello world! ${hostname}:${PORT}`);
+  return res.end(`Hello world! Tester. ${hostname}:${PORT}`);
 });
 
 server.listen(PORT, () => {
