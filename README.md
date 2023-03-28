@@ -10,3 +10,10 @@ Node.js in production
 
 docker-compose up -d - сборка images и запуск сервисов(контейнеров)
 docker-compose down - остановка.
+
+
+# Как мы можем запускать наше приложение?
+
+- Dockerfile + k8s.
+- Dockerfile + k8s.
+- CI.
